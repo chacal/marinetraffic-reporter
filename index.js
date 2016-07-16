@@ -35,7 +35,6 @@ function sendPositionReportMsg(msg, ip, port) {
     } else {
       console.log('Position sent successfully!')
     }
-    udpSocket.close()
   })
 }
 
