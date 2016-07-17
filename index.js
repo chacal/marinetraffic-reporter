@@ -32,16 +32,12 @@ function sendPositionReportMsg(msg, ip, port) {
   udpSocket.send(msg.nmea, 0, msg.nmea.length, port, ip, err => {
     if(err) {
       console.log('Failed to send position report.', err)
-    } else {
-      console.log('Position sent successfully!')
     }
   })
 }
 
 
 function createPositionReportMessage(mmsi, lat, lon, sog, cog) {
-  console.log(`MMSI: ${mmsi} LAT: ${lat} LON: ${lon} SOG: ${sog} COG: ${cog}`)
-
   return new AisEncode ({
     aistype    : 18,     // class B position report
     repeat     : 0,
