@@ -15,7 +15,7 @@ function getPositionAndReport() {
   request(SIGNALK_API_URL + '/vessels/self/navigation', (err, res, navigation) => {
     if(err) {
       console.log('Error getting navigation data from SignalK server: ' + SIGNALK_API_URL)
-    } else {
+    } else if(res.statusCode === 200 && navigation && navigation.position && navigation.speedOverGround && navigation.courseOverGroundTrue) {
       var positionReportMgs = createPositionReportMessage(
         MMSI,
         navigation.position.latitude,
